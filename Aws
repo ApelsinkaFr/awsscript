@@ -1,0 +1,33 @@
+local VLib = loadstring(game:HttpGet("https://pastebin.com/raw/Mb49kKTP"))()
+
+
+		MAINTTL = "Apelsin AWS Hub" 
+
+local win = VLib:Window("AWS[🥊Punch]", Color3.fromRGB(196, 40, 28))
+
+local about = win:Tab("HOW TO USE")
+local main = win:Tab("MAIN")
+local misc = win:Tab("MISC")
+
+about:Button("Destroy Gui",function()
+game.CoreGui["Library"]:Destroy()
+end)
+    distance = 50
+    
+    
+     about:Label("Типа пошёл нахуй, сам разберёшься")
+    
+main:Toggle("Auto Kill / Swing",function(v)
+    getgenv().autokill = v
+    while true do
+           if not getgenv().autokill then return end
+       wait(0.175)
+   game:GetService("ReplicatedStorage").System.SystemClick.Click:FireServer()
+   end
+end)
+ misc:Slider("WalkSpeed",0,500,26,function(v)
+ WalkSpeedValue = v
+     game:GetService("RunService").RenderStepped:wait() do
+ game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = WalkSpeedValue
+ end
+end)
