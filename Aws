@@ -1,38 +1,159 @@
-local VLib = loadstring(game:HttpGet("https://pastebin.com/raw/Mb49kKTP"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/bunny42312/script/main/acs"))()
 
+wait(2)
 
-		MAINTTL = "Apelsin AWS Hub" 
-
-local win = VLib:Window("AWS[🥊Punch]", Color3.fromRGB(196, 40, 28))
-
-local about = win:Tab("HOW TO USE")
-local main = win:Tab("MAIN")
-local misc = win:Tab("MISC")
-local vu = game:GetService("VirtualUser")
-game:GetService("Players").LocalPlayer.Idled:connect(function()
-   vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-   wait(1)
-   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+local Library =   loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+  local Window = Library.CreateLib("Апрель", "Ocean")
+  local Main = Window:NewTab("Орбы")
+  local Other = Window:NewTab("Машины")
+  local Raid = Window:NewTab("Рейды")
+local MainSection = Main:NewSection("Открытия")
+local OtherSection = Other:NewSection("Машины")
+local RaidSection = Raid:NewSection("Рейды")
+  local Uis = game:GetService("UserInputService")
+Uis.InputBegan:Connect(function(input, index)
+    if input.KeyCode == Enum.KeyCode.LeftControl then
+        Library:ToggleUI()
+    end
 end)
-about:Button("Destroy Gui",function()
-game.CoreGui["Library"]:Destroy()
+
+MainSection:NewToggle("Демон слеер", "", function(v)
+_G.open = v
+while true do
+    if not _G.open then return end
+    wait(0.1)
+local args = {
+    [1] = workspace.Worlds.DemonSlayer.DemonOrb,
+    [2] = 7
+}
+
+game:GetService("ReplicatedStorage").Remote.Orbs.OpenOrbs:FireServer(unpack(args))
+end
 end)
-    distance = 50
-    
-    
-     about:Label("Типа пошёл нахуй, сам разберёшься")
-    
-main:Toggle("Auto Kill / Swing",function(v)
-    getgenv().autokill = v
-    while true do
-           if not getgenv().autokill then return end
-       wait(0.175)
-   game:GetService("ReplicatedStorage").System.SystemClick.Click:FireServer()
-   end
+
+MainSection:NewToggle("Драгон бол", "", function(v)
+_G.open2 = v
+while true do
+    if not _G.open2 then return end
+    wait(1)
+local args = {
+    [1] = workspace.Worlds.DBZ.DBZOrb,
+    [2] = 7
+}
+
+game:GetService("ReplicatedStorage").Remote.Orbs.OpenOrbs:FireServer(unpack(args))
+
+end
 end)
- misc:Slider("WalkSpeed",0,500,26,function(v)
- WalkSpeedValue = v
-     game:GetService("RunService").RenderStepped:wait() do
- game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = WalkSpeedValue
- end
+
+MainSection:NewToggle("Ван Пис", "", function(v)
+_G.open3 = v
+while true do
+    if not _G.open3 then return end
+    wait(1)
+local args = {
+    [1] = "OnePieceOrb",
+    [2] = 4
+}
+
+game:GetService("ReplicatedStorage").Remote.Orbs.OpenOrbs:FireServer(unpack(args))
+
+end
+end)
+
+MainSection:NewToggle("Наруто", "", function(v)
+_G.open4 = v
+while true do
+    if not _G.open4 then return end
+    wait(1)
+local args = {
+    [1] = "NarutoOrb",
+    [2] = 4
+}
+
+game:GetService("ReplicatedStorage").Remote.Orbs.OpenOrbs:FireServer(unpack(args))
+
+end
+end)
+
+OtherSection:NewButton("Открыть пассивки", "", function()
+game:GetService("Players").LocalPlayer.PlayerGui.MainGui.Windows.PassiveMachine.Visible = true
+end)
+
+RaidSection:NewToggle("DBZ RAID COLLECT", "", function(v)
+_G.DBZ = v
+while true do
+    if not _G.DBZ then return end
+    wait()
+
+local args = {
+    [1] = "DBZMedal",
+    [2] = 1
+}
+
+game:GetService("ReplicatedStorage").Remote.Drops.Items:FireServer(unpack(args))
+end
+end)
+
+RaidSection:NewToggle("DS RAID COLLECT", "", function(v)
+_G.DS = v
+while true do
+    if not _G.DS then return end
+    wait()
+
+local args = {
+    [1] = "DemonSlayerMedal",
+    [2] = 1
+}
+
+game:GetService("ReplicatedStorage").Remote.Drops.Items:FireServer(unpack(args))
+
+end
+end)
+
+RaidSection:NewToggle("JOJO RAID COLLECT", "", function(v)
+_G.JJ = v
+while true do
+    if not _G.JJ then return end
+    wait()
+
+local args = {
+    [1] = "JojoMedal",
+    [2] = 1
+}
+
+game:GetService("ReplicatedStorage").Remote.Drops.Items:FireServer(unpack(args))
+
+end
+end)
+
+RaidSection:NewToggle("Авто перезаход", "", function(v)
+_G.Rejoin = v
+while true do
+    if not _G.Rejoin then return end
+    wait()
+local args = {
+    [1] = "Hub"
+}
+
+game:GetService("ReplicatedStorage").Remote.Player.Teleport:FireServer(unpack(args))
+wait(70)
+
+end
+end)
+
+RaidSection:NewToggle("NINJA RAID COLLECT", "", function(v)
+_G.NJ = v
+while true do
+    if not _G.NJ then return end
+    wait()
+
+local args = {
+    [1] = "NarutoMedal",
+    [2] = 1
+}
+
+game:GetService("ReplicatedStorage").Remote.Drops.Items:FireServer(unpack(args))
+
+end
 end)
