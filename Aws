@@ -1,9 +1,3 @@
-local name = "ApelsinkaFr"
-local quest = "Up"
-local trade = "SA"
-local gem = "1D"
-local accept ="ux"
-
 
 local name = "ApelsinkaFr"
 local quest = "Up"
